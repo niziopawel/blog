@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import Hamburger from '../hamburger'
 import './Header.css'
 
 const navLinks = [
@@ -22,6 +23,7 @@ function Header() {
               </li>
             ))}
           </ul>
+          <Hamburger />
         </nav>
       </div>
     </header>

@@ -11,36 +11,36 @@ module.exports = function (_env, argv) {
     entry: path.resolve(__dirname, './src/index.js'),
     output: {
       filename: 'bundle.js',
-      path: path.resolve(__dirname, 'dist')
+      path: path.resolve(__dirname, 'dist'),
     },
     module: {
       rules: [
         {
           test: /\.(js|jsx)$/,
           exclude: /node_modules/,
-          use: ['babel-loader']
+          use: ['babel-loader'],
         },
         {
           test: /\.css$/,
           use: [
             isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
-            'css-loader'
-          ]
-        }
-      ]
+            'css-loader',
+          ],
+        },
+      ],
     },
     resolve: {
-      extensions: ['*', '.js', '.jsx']
+      extensions: ['*', '.js', '.jsx'],
     },
     plugins: [
       isProduction &&
         new MiniCssExtractPlugin({
-          filename: '[name].[contenthash:8].css'
+          filename: '[name].[contenthash:8].css',
         }),
       new HtmlWebpackPlugin({
-        template: path.resolve(__dirname, 'dist/index.html')
+        template: path.resolve(__dirname, 'dist/index.html'),
       }),
-      new webpack.HotModuleReplacementPlugin()
+      new webpack.HotModuleReplacementPlugin(),
     ].filter(Boolean),
     devServer: {
       port: 3000,
@@ -48,7 +48,7 @@ module.exports = function (_env, argv) {
       compress: true,
       historyApiFallback: true,
       open: true,
-      hot: true
-    }
+      hot: true,
+    },
   }
 }
