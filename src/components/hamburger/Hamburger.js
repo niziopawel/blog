@@ -1,13 +1,10 @@
-import { useState } from 'react'
 import './Hamburger.css'
 
-function Hamburger() {
-  const [isActive, setIsActvie] = useState(false)
-
+function Hamburger({ isMenuOpen, onToggleMenu }) {
   return (
     <div
-      className={`hamburger ${isActive ? 'hamburger--active' : ''}`}
-      onClick={() => setIsActvie(!isActive)}
+      className={`hamburger ${isMenuOpen ? 'hamburger--active' : ''}`}
+      onClick={() => onToggleMenu()}
     >
       <span className="hamburger__line"></span>
       <span className="hamburger__line"></span>

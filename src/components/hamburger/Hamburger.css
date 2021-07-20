@@ -1,10 +1,11 @@
 .hamburger {
   background: transparent;
-  display: inline-block;
+  display: block;
   -webkit-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
-  width: 35px;
+  width: 30px;
+  align-self: center;
 }
 
 .hamburger__line {
@@ -31,4 +32,10 @@
 }
 .hamburger--active .hamburger__line:nth-child(3) {
   transform: translateY(-8px) rotate(-45deg);
+}
+
+@media (min-width: 768px) {
+  .hamburger {
+    display: none;
+  }
 }

@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import Hamburger from '../hamburger'
 import './Header.css'
@@ -9,13 +10,22 @@ const navLinks = [
 ]
 
 function Header() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen)
+  }
   return (
     <header className="header">
       <div className="header__inner">
         <div className="header__logo">
           <h2>Blog</h2>
         </div>
-        <nav className="header__navigation">
+        <nav
+          className={`header__navigation ${
+            isMenuOpen ? 'header__navigation--open' : ''
+          }`}
+        >
           <ul>
             {navLinks.map((link, index) => (
               <li key={index}>
@@ -23,8 +33,8 @@ function Header() {
               </li>
             ))}
           </ul>
-          <Hamburger />
         </nav>
+        <Hamburger isMenuOpen={isMenuOpen} onToggleMenu={toggleMenu} />
       </div>
     </header>
   )
