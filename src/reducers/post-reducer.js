@@ -1,7 +1,7 @@
 import { postsActions } from '../actions/post-actions'
 
 const initialState = {
-  data: null,
+  data: [],
   isFetching: false,
   error: null,
 }

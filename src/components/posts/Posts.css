@@ -1,0 +1,50 @@
+.post-list {
+  margin-top: 50px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+
+  --columns: 1;
+  --width: 1;
+  --gap-constant: 0.5%;
+  --initialBasis: calc(var(--width) / var(--columns) * 100%);
+  --gap: calc((var(--columns) - var(--width)) * var(--gap-constant));
+  --postCardWidth: calc(var(--initialBasis) - var(--gap));
+}
+
+.post-list::after {
+  content: '';
+  flex-basis: var(--postCardWidth);
+}
+
+.post-list > * {
+  margin-bottom: 20px;
+  flex-basis: 90%;
+}
+
+@media (min-width: 576px) {
+  .post-list {
+    justify-content: space-between;
+
+    --columns: 2;
+    --gap-constant: 1%;
+  }
+
+  .post-list > * {
+    flex-basis: var(--postCardWidth);
+  }
+}
+
+@media (min-width: 768px) {
+  .post-list {
+    --columns: 3;
+    --gap-constant: 0.8%;
+  }
+}
+
+@media (min-width: 992px) {
+  .post-list {
+    --columns: 4;
+    --gap-constant: 0.2%;
+  }
+}

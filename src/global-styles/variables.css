@@ -2,6 +2,7 @@
   --background: #fff;
   --text-color: #444;
   --text-light: rgba(15, 15, 15, 0.5);
+  --text-dark: #131516;
   --max-page-width: 1192px;
   --shadow-1: rgba(0, 0, 0, 0.05) 0px 4px 12px 0px;
 }
