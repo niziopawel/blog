@@ -20,7 +20,9 @@ function Header() {
     <header className="header">
       <div className="header__inner">
         <div className="header__logo">
-          <h2>Blog</h2>
+          <Link to="/">
+            <h2>Blog</h2>
+          </Link>
         </div>
         <nav
           className={`header__navigation ${

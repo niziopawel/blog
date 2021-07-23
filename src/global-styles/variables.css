@@ -1,5 +1,6 @@
 :root {
   --background: #fff;
+  --color-grey-light: rgba(0, 0, 0, 0.08);
   --text-color: #444;
   --text-light: rgba(15, 15, 15, 0.5);
   --text-dark: #131516;

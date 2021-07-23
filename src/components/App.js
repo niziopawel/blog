@@ -1,3 +1,5 @@
+import { Route, Switch, Redirect } from 'react-router-dom'
+
 import Header from './header'
 import Posts from './posts'
 import './App.css'
@@ -15,7 +17,14 @@ function App() {
     <div className="app">
       <Header />
       <Wrapper>
-        <Posts />
+        <Switch>
+          <Route exact path="/">
+            <Redirect to="/blog" />
+          </Route>
+          <Route exact path="/blog">
+            <Posts />
+          </Route>
+        </Switch>
       </Wrapper>
     </div>
   )
