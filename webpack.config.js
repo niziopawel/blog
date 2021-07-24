@@ -12,13 +12,14 @@ module.exports = function (_env, argv) {
     output: {
       filename: 'bundle.js',
       path: path.resolve(__dirname, 'dist'),
+      publicPath: '/',
     },
     module: {
       rules: [
         {
           test: /\.(js|jsx)$/,
           exclude: /node_modules/,
-          use: ['babel-loader'],
+          use: ['babel-loader', 'source-map-loader'],
         },
         {
           test: /\.css$/,

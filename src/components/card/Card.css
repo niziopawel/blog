@@ -7,7 +7,7 @@
   border-radius: 4px;
   position: relative;
   max-width: 430px;
-  border: 1px solid rgba(0, 0, 0, 0.125);
+  box-shadow: var(--shadow-3);
 }
 
 .card__content {

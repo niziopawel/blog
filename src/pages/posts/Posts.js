@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useQuery } from '../hooks/useQuery'
-import Post from '../post'
-import Pagination from '../pagination'
+import { useQuery } from '../../hooks/useQuery'
+import PostCard from '../../components/post-card'
+import Pagination from '../../components/pagination'
 import { fetchPosts } from '../../actions/post-actions'
 import './Posts.css'
 
@@ -30,7 +30,9 @@ function Posts() {
         {isFetching && <div>Loading...</div>}
         {error && <div>{error}</div>}
         {posts.length > 0 &&
-          getPaginatedPosts().map(post => <Post key={post.id} post={post} />)}
+          getPaginatedPosts().map(post => (
+            <PostCard key={post.id} post={post} />
+          ))}
       </section>
       <Pagination
         currentPage={currentPage}
