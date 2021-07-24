@@ -10,10 +10,11 @@ import './Posts.css'
 function PostsList() {
   const [itemsPerPage] = useState(20)
   const query = useQuery()
+  const dispatch = useDispatch()
   const [currentPage, setCurrentPage] = useState(query.get('page') || 1)
+
   const posts = useSelector(selectAllPosts)
   const { isLoading, error } = useSelector(state => state.posts)
-  const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(fetchPosts())

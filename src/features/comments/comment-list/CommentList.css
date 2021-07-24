@@ -1,0 +1,15 @@
+.comments__header {
+  margin-bottom: 20px;
+}
+.comments__single-comments {
+  max-width: 95%;
+  margin: auto;
+}
+
+.comments__list > * {
+  margin-bottom: 20px;
+}
+
+.comment__date {
+  text-transform: none;
+}

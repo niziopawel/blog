@@ -3,7 +3,6 @@ import {
   createAsyncThunk,
   createEntityAdapter,
 } from '@reduxjs/toolkit'
-import { isActionPending, isActionRejected } from '../utils'
 import postsAPI from './postsAPI'
 
 export const fetchPosts = createAsyncThunk('posts/fetchAll', async () => {
@@ -30,18 +29,25 @@ const postsSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: builder => {
+    builder.addCase(fetchPosts.pending, state => {
+      state.isLoading = true
+    })
     builder.addCase(fetchPosts.fulfilled, (state, action) => {
       postsAdapter.upsertMany(state, action.payload)
       state.isLoading = false
+    })
+    builder.addCase(fetchPosts.rejected, (state, action) => {
+      state.isLoading = false
+      state.error = action.payload
+    })
+    builder.addCase(fetchPostById.pending, state => {
+      state.isLoading = true
     })
     builder.addCase(fetchPostById.fulfilled, (state, action) => {
       postsAdapter.upsertOne(state, action.payload)
       state.isLoading = false
     })
-    builder.addMatcher(isActionPending, (state, action) => {
-      state.isLoading = true
-    })
-    builder.addMatcher(isActionRejected, (state, action) => {
+    builder.addCase(fetchPostById.rejected, (state, action) => {
       state.isLoading = false
       state.error = action.payload
     })
