@@ -34,7 +34,6 @@ function PostDetails() {
             <h1 className="post__title">{post.title}</h1>
             <p className="post__content">{post.body}</p>
           </article>
-          <section className="comments"></section>
         </>
       )}
     </div>

@@ -51,7 +51,7 @@
 }
 
 .header__navigation > ul > li:hover {
-  color: var(--text-color);
+  color: var(--text-default);
 }
 
 .header__navigation--open {
