@@ -1,21 +1,22 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useQuery } from '../../hooks/useQuery'
-import PostCard from '../../components/post-card'
-import Pagination from '../../components/pagination'
-import { fetchPosts } from '../../actions/post-actions'
+import { useQuery } from '../../../hooks/useQuery'
+import PostCard from '../post-card/PostCard'
+import Pagination from '../../../components/pagination'
+import { fetchPosts, selectAllPosts } from '../postsSlice'
 import './Posts.css'
 
-function Posts() {
-  const { data: posts, isFetching, error } = useSelector(state => state.posts)
+function PostsList() {
   const [itemsPerPage] = useState(20)
   const query = useQuery()
   const [currentPage, setCurrentPage] = useState(query.get('page') || 1)
+  const posts = useSelector(selectAllPosts)
+  const { isLoading, error } = useSelector(state => state.posts)
   const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(fetchPosts())
-  }, [])
+  }, [dispatch])
 
   const getPaginatedPosts = () => {
     const startIndex = currentPage * itemsPerPage - itemsPerPage
@@ -24,11 +25,17 @@ function Posts() {
     return posts.slice(startIndex, endIndex)
   }
 
+  if (isLoading) {
+    return <div>Loading...</div>
+  }
+
+  if (error) {
+    return <div>{error.mesage}</div>
+  }
+
   return (
     <>
       <section className="post-list">
-        {isFetching && <div>Loading...</div>}
-        {error && <div>{error}</div>}
         {posts.length > 0 &&
           getPaginatedPosts().map(post => (
             <PostCard key={post.id} post={post} />
@@ -44,4 +51,4 @@ function Posts() {
   )
 }
 
-export default Posts
+export default PostsList

@@ -1,7 +1,7 @@
 import { Route, Switch, Redirect } from 'react-router-dom'
 import Header from './components/header'
-import Posts from './pages/posts'
-import SinglePost from './pages/single-post'
+import PostsList from './features/posts/posts-list'
+import PostDetails from './features/posts/PostDetails'
 import './App.css'
 
 function Wrapper({ children }) {
@@ -22,10 +22,10 @@ function App() {
             <Redirect to="/blog" />
           </Route>
           <Route exact path="/blog">
-            <Posts />
+            <PostsList />
           </Route>
           <Route exact path="/post/:postId">
-            <SinglePost />
+            <PostDetails />
           </Route>
         </Switch>
       </Wrapper>

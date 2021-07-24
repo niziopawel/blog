@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import Card from '../card'
+import Card from '../../../components/card'
 
 function Post({ post }) {
   return (
