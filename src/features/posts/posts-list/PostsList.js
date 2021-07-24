@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useQuery } from '../../../hooks/useQuery'
 import PostCard from '../post-card/PostCard'
 import Pagination from '../../../components/pagination'
+import Spinner from '../../../components/spinner'
 import { fetchPosts, selectAllPosts } from '../postsSlice'
 import './Posts.css'
 
@@ -26,11 +27,11 @@ function PostsList() {
   }
 
   if (isLoading) {
-    return <div>Loading...</div>
+    return <Spinner />
   }
 
   if (error) {
-    return <ErrorMessage>{error}</ErrorMessage>
+    return <ErrorMessage>{error.message}</ErrorMessage>
   }
 
   return (

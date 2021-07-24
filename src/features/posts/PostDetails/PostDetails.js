@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import Spinner from '../../../components/spinner'
 import { useParams } from 'react-router-dom'
 import ErrorMessage from '../../../components/error-message'
 import { fetchPostById, selectPostById } from '../postsSlice'
@@ -17,8 +18,12 @@ function PostDetails() {
     }
   }, [dispatch])
 
+  if (isLoading) {
+    return <Spinner />
+  }
+
   if (error) {
-    return <ErrorMessage>{error}</ErrorMessage>
+    return <ErrorMessage>{error.message}</ErrorMessage>
   }
 
   return (
