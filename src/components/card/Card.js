@@ -1,5 +1,5 @@
+import Avatar from '../avatar'
 import './Card.css'
-
 function Card({ className, children, ...restProps }) {
   return (
     <div className={`card ${className ? className : ''}`} {...restProps}>
@@ -35,8 +35,24 @@ Card.Subtitle = function CardSubtitle({ children }) {
   return <div className="card__subtitle">{children}</div>
 }
 
-Card.Date = function CardDate({ children }) {
-  return <time className="card__date">{children}</time>
+Card.Date = function CardDate({ children, className }) {
+  return (
+    <time className={`card__date ${className ? className : ''}`}>
+      {children}
+    </time>
+  )
 }
 
+Card.Description = function CardDescriptio({ children }) {
+  return <p className="card__description">{children}</p>
+}
+
+Card.UserAvatar = function CardUserAvatar({ children, src, alt }) {
+  return (
+    <div className="card__user-avatar">
+      <Avatar src={src} alt={alt} />
+      {children}
+    </div>
+  )
+}
 export default Card
