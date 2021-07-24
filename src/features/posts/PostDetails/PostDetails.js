@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useParams } from 'react-router-dom'
+import ErrorMessage from '../../../components/error-message'
 import { fetchPostById, selectPostById } from '../postsSlice'
 import './PostDetails.css'
 
@@ -16,10 +17,12 @@ function PostDetails() {
     }
   }, [dispatch])
 
+  if (error) {
+    return <ErrorMessage>{error}</ErrorMessage>
+  }
+
   return (
     <div className="post-wrapper">
-      {error && <div>{error}</div>}
-      {isLoading && <div>Loading...</div>}
       {post && (
         <>
           <article className="post">

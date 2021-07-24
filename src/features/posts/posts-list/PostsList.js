@@ -30,7 +30,7 @@ function PostsList() {
   }
 
   if (error) {
-    return <div>{error.mesage}</div>
+    return <ErrorMessage>{error}</ErrorMessage>
   }
 
   return (
