@@ -1,0 +1,11 @@
+.comments__add-comment {
+  max-width: 100%;
+  margin: 0 auto;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 576px) {
+  .comments__add-comment {
+    max-width: 95%;
+  }
+}

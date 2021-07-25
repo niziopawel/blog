@@ -1,15 +1,15 @@
-// import AddCommentForm from '../add-comment-form'
 import './CommentList.css'
 import Card from '../../../components/card'
-import Avatar from '../../../components/avatar'
+import AddCommentForm from '../add-comment-form'
 
 function CommentList({ comments }) {
   return (
     <section className="comments">
       <h4 className="comments__header">Discussion ({comments.length})</h4>
+      <AddCommentForm />
       <div className="comments__list">
         {comments.map(comment => (
-          <Card key={comment.id} className="comments__single-comments">
+          <Card key={comment.id} className="comments__single-comment">
             <Card.Content>
               <Card.UserAvatar
                 src="https://www.pngkey.com/png/full/114-1149878_setting-user-avatar-in-specific-size-without-breaking.png"

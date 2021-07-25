@@ -23,7 +23,7 @@
   font-size: 1.1rem;
   font-weight: normal;
   padding-bottom: 20px;
-  border-bottom: 1px solid var(--color-grey-light);
+  border-bottom: var(--border-1);
 }
 
 .post__content:first-letter {

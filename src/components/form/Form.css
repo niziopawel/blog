@@ -1,0 +1,41 @@
+.form {
+}
+
+.form__form-group {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 0.8rem;
+}
+
+.form__input,
+.form__text-area {
+  padding: 0.2rem;
+  font-size: 1rem;
+  border-radius: 4px;
+  border: var(--border-1);
+}
+
+.form__input:focus-visible,
+.form__text-area:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 0.15rem rgba(0, 123, 255, 0.4);
+}
+
+.form__label {
+  color: var(--text-default);
+  font-size: 0.9375rem;
+  font-weight: 400;
+  line-height: 2;
+}
+
+.form__error-message {
+  color: var(--color-error);
+  padding-top: 5px;
+  font-size: 0.875rem;
+  font-weight: 400;
+}
+
+.form__text-area {
+  max-width: 100%;
+  min-width: 100%;
+}

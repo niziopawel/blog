@@ -17,9 +17,6 @@ function PostDetails() {
   const { isLoading: isFetchingPost, error: postError } = useSelector(
     state => state.posts,
   )
-  const { isLoading: isFetchingComments, error: commentsError } = useSelector(
-    state => state.comments,
-  )
   const post = useSelector(state => selectPostById(state, postId))
   const comments = useSelector(selectCommentsByPostId(postId))
 

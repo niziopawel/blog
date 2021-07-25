@@ -1,7 +1,7 @@
 import { Route, Switch, Redirect } from 'react-router-dom'
 import Header from './components/header'
 import PostsList from './features/posts/posts-list'
-import PostDetails from './features/posts/PostDetails'
+import PostDetails from './features/posts/post-details'
 import './App.css'
 
 function Wrapper({ children }) {
