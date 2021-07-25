@@ -25,6 +25,6 @@ To run this project, install it locally using npm or yarn:
 
 ```
 $ npm install / yarn
-$ npm dev / yarn dev - starting development server
+$ npm run dev / yarn dev - starting development server
 $ npm run build / yarn build - production mode
 ```
