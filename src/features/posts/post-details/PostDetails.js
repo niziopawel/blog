@@ -3,7 +3,9 @@ import { useSelector, useDispatch } from 'react-redux'
 import Spinner from '../../../components/spinner'
 import ErrorMessage from '../../../components/error-message'
 import CommentList from '../../comments/comment-list'
+import Like from '../../../components/like'
 import { useParams } from 'react-router-dom'
+import { useLikedPosts } from '../../../hooks/useLikedPosts'
 import { fetchPostById, selectPostById } from '../postsSlice'
 import {
   fetchPostsComments,
@@ -19,6 +21,7 @@ function PostDetails() {
   )
   const post = useSelector(state => selectPostById(state, postId))
   const comments = useSelector(selectCommentsByPostId(postId))
+  const { likedPosts, handlePostLike } = useLikedPosts()
 
   useEffect(async () => {
     if (!post) {
@@ -45,6 +48,11 @@ function PostDetails() {
           <article className="post">
             <h1 className="post__title">{post.title}</h1>
             <p className="post__content">{post.body}</p>
+            <Like
+              className="post__like"
+              isLiked={likedPosts[post.id] ? true : false}
+              onClick={() => handlePostLike(post.id)}
+            />
           </article>
           <CommentList comments={comments} />
         </>

@@ -3,9 +3,24 @@
   color: var(--text-dark);
   padding: 20px;
 }
+.post {
+  position: relative;
+  border-bottom: var(--border-1);
+  margin-bottom: 30px;
+}
+
+.post__like {
+  height: 30px;
+  width: 30px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin-top: 5px;
+  margin-right: 5px;
+}
 
 .post > * {
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 }
 
 .post__title {
@@ -22,8 +37,6 @@
   overflow-wrap: break-word;
   font-size: 1.1rem;
   font-weight: normal;
-  padding-bottom: 20px;
-  border-bottom: var(--border-1);
 }
 
 .post__content:first-letter {
@@ -41,7 +54,6 @@
   }
   .post__content {
     line-height: 28px;
-    padding-bottom: 40px;
     font-size: 1.125rem;
   }
 }
@@ -58,7 +70,6 @@
   }
   .post__content {
     line-height: 30px;
-    padding-bottom: 40px;
     font-size: 1.25rem;
   }
 }

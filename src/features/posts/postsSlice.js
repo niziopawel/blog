@@ -22,6 +22,7 @@ const postsAdapter = createEntityAdapter()
 const initialState = postsAdapter.getInitialState({
   isLoading: false,
   error: null,
+  likedPosts: [],
 })
 
 const postsSlice = createSlice({
