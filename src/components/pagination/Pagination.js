@@ -8,7 +8,7 @@ function Pagination({ totalRecords, onPageChange, currentPage, itemsPerPage }) {
   const handlePageChange = page => {
     onPageChange(page)
     window.scrollTo(0, 0)
-    history.push(`?page=${currentPage}`)
+    history.push(`?page=${page}`)
   }
 
   const goToNextPage = () => {
@@ -57,17 +57,19 @@ function Pagination({ totalRecords, onPageChange, currentPage, itemsPerPage }) {
       >
         Previous
       </button>
-      {getPaginationGroup().map(pageIndex => (
-        <li
-          key={pageIndex}
-          onClick={() => handlePageChange(pageIndex)}
-          className={`pagination__item ${
-            pageIndex === currentPage ? 'pagination__item--active' : ''
-          }`}
-        >
-          {pageIndex}
-        </li>
-      ))}
+      {getPaginationGroup().map(pageIndex => {
+        return (
+          <li
+            key={pageIndex}
+            onClick={() => handlePageChange(pageIndex)}
+            className={`pagination__item ${
+              pageIndex == currentPage ? 'pagination__item--active' : ''
+            }`}
+          >
+            {pageIndex}
+          </li>
+        )
+      })}
       <button
         onClick={() => goToNextPage()}
         className="pagination__item"
