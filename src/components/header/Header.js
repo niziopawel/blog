@@ -6,7 +6,6 @@ import './Header.css'
 const navLinks = [
   { title: 'Blog', path: '/blog' },
   { title: 'About', path: '/about' },
-  { title: 'Sign in', path: '/signin' },
 ]
 
 function Header() {

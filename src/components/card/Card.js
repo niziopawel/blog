@@ -16,12 +16,10 @@ Card.Content = function CardContent({ children, ...restProps }) {
   )
 }
 
-Card.Image = function CardImage({ className, src, alt, ...restProps }) {
+Card.Image = function CardImage({ className, ...restProps }) {
   return (
     <img
       className={`card__image ${className ? className : ''}`}
-      src={src}
-      alt={alt}
       {...restProps}
     />
   )

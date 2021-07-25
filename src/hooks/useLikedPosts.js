@@ -18,6 +18,7 @@ export const useLikedPosts = () => {
     } else {
       delete likedPostsCpy[postId]
     }
+
     localStorage.setItem('likedPosts', JSON.stringify(likedPostsCpy))
     setLikedPosts(likedPostsCpy)
   }
