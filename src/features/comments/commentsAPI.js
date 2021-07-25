@@ -11,8 +11,10 @@ const commentsAPI = {
 
   async addNewComment(postId, newPost) {
     const response = await fetch(`${API_URL}/comments?postId=${postId}`, {
-      method: 'GET',
-      headers: { 'Content-Type': 'application/json' },
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
       body: JSON.stringify(newPost),
     })
 

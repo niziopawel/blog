@@ -15,7 +15,18 @@ export const fetchPostsComments = createAsyncThunk(
   },
 )
 
-const commentsAdapter = createEntityAdapter()
+export const addNewComment = createAsyncThunk(
+  'comments/addNewComment',
+  async args => {
+    const comment = await commentsAPI.addNewComment(args.postId, args.newPost)
+
+    return comment
+  },
+)
+
+const commentsAdapter = createEntityAdapter({
+  sortComparer: (a, b) => b.id > a.id,
+})
 const initialState = commentsAdapter.getInitialState({
   isLoading: false,
   error: null,
@@ -34,6 +45,17 @@ const commentsSlice = createSlice({
       state.isLoading = false
     })
     builder.addCase(fetchPostsComments.rejected, (state, action) => {
+      state.isLoading = false
+      error = action.payload
+    })
+    builder.addCase(addNewComment.pending, state => {
+      state.isLoading = true
+    })
+    builder.addCase(addNewComment.fulfilled, (state, action) => {
+      commentsAdapter.addOne(state, action.payload)
+      state.isLoading = false
+    })
+    builder.addCase(addNewComment.rejected, (state, action) => {
       state.isLoading = false
       error = action.payload
     })

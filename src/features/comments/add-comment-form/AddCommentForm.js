@@ -1,10 +1,13 @@
+import { useParams } from 'react-router-dom'
+import { useState } from 'react'
+import { useDispatch } from 'react-redux'
 import Form from '../../../components/form'
 import Button from '../../../components/button'
-import { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { addNewComment } from '../commentsSlice'
 import './AddCommentForm.css'
 
 function AddCommentForm() {
+  const { postId } = useParams()
   const dispatch = useDispatch()
   const [email, setEmail] = useState('')
   const [content, setContent] = useState('')
@@ -12,12 +15,20 @@ function AddCommentForm() {
 
   const handleEmailChange = e => setEmail(e.currentTarget.value)
   const handleContentChange = e => setContent(e.currentTarget.value)
-  const handleCommentSave = e => {
+  const handleCommentSave = async e => {
     e.preventDefault()
     const isFormValid = validateForm()
 
     if (isFormValid) {
-      clearForm()
+      try {
+        const newPost = {
+          postId: postId,
+          email: email,
+          body: content,
+        }
+        const response = await dispatch(addNewComment({ postId, newPost }))
+        clearForm()
+      } catch (error) {}
     }
   }
 
@@ -28,7 +39,7 @@ function AddCommentForm() {
   }
 
   const validateForm = () => {
-    let isFormValid
+    let isFormValid = true
     const re = /^[^\s@]+@[^\s@]+$/
 
     if (!re.test(email)) {
