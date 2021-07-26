@@ -18,17 +18,48 @@ export const fetchPostById = createAsyncThunk(
   },
 )
 
+export const handlePostLike = postId => {
+  return (dispatch, getState) => {
+    const state = getState()
+    if (!state.posts.likedPostsIds[postId]) {
+      dispatch(likePost(postId))
+    }
+    if (state.posts.likedPostsIds[postId]) {
+      dispatch(unLikePost(postId))
+    }
+  }
+}
+
 const postsAdapter = createEntityAdapter()
 const initialState = postsAdapter.getInitialState({
   isLoading: false,
   error: null,
-  likedPosts: [],
+  likedPostsIds: {},
 })
 
 const postsSlice = createSlice({
   name: 'posts',
   initialState,
-  reducers: {},
+  reducers: {
+    likePost(state, action) {
+      return {
+        ...state,
+        likedPostsIds: {
+          ...state.likedPostsIds,
+          [action.payload]: action.payload,
+        },
+      }
+    },
+    unLikePost(state, action) {
+      const likedPostsIdsCpy = { ...state.likedPostsIds }
+      delete likedPostsIdsCpy[action.payload]
+
+      return {
+        ...state,
+        likedPostsIds: likedPostsIdsCpy,
+      }
+    },
+  },
   extraReducers: builder => {
     builder.addCase(fetchPosts.pending, state => {
       state.isLoading = true
@@ -55,9 +86,17 @@ const postsSlice = createSlice({
   },
 })
 
-export default postsSlice.reducer
+const { actions, reducer } = postsSlice
+
 export const {
   selectAll: selectAllPosts,
   selectById: selectPostById,
   selectIds: selectPostIds,
 } = postsAdapter.getSelectors(state => state.posts)
+
+export const selectLikedPosts = state => {
+  return state.posts.likedPostsIds
+}
+export const { likePost, unLikePost } = actions
+
+export default reducer

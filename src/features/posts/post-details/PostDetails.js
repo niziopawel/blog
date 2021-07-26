@@ -5,8 +5,12 @@ import ErrorMessage from '../../../components/error-message'
 import CommentList from '../../comments/comment-list'
 import Like from '../../../components/like'
 import { useParams } from 'react-router-dom'
-import { useLikedPosts } from '../../../hooks/useLikedPosts'
-import { fetchPostById, selectPostById } from '../postsSlice'
+import {
+  fetchPostById,
+  selectPostById,
+  selectLikedPosts,
+  handlePostLike,
+} from '../postsSlice'
 import {
   fetchPostsComments,
   selectCommentsByPostId,
@@ -21,7 +25,7 @@ function PostDetails() {
   )
   const post = useSelector(state => selectPostById(state, postId))
   const comments = useSelector(selectCommentsByPostId(postId))
-  const { likedPosts, handlePostLike } = useLikedPosts()
+  const likedPosts = useSelector(state => selectLikedPosts(state))
 
   useEffect(async () => {
     if (!post) {
@@ -51,7 +55,7 @@ function PostDetails() {
             <Like
               className="post__like"
               isLiked={likedPosts[post.id] ? true : false}
-              onClick={() => handlePostLike(post.id)}
+              onClick={() => dispatch(handlePostLike(post.id))}
             />
           </article>
           <CommentList comments={comments} />
