@@ -1,7 +1,13 @@
 import { useHistory } from 'react-router-dom'
 import './Pagination.css'
 
-function Pagination({ totalRecords, onPageChange, currentPage, itemsPerPage }) {
+function Pagination({
+  totalRecords,
+  onPageChange,
+  currentPage,
+  itemsPerPage,
+  pagesToShow,
+}) {
   const totalPages = Math.ceil(totalRecords.length / itemsPerPage)
   const history = useHistory()
 
@@ -14,14 +20,14 @@ function Pagination({ totalRecords, onPageChange, currentPage, itemsPerPage }) {
   const goToNextPage = () => {
     handlePageChange(currentPage + 1)
   }
+
   const goToPreviousPage = () => {
     handlePageChange(currentPage - 1)
   }
-
+  //need refactor
   const getPaginationGroup = () => {
     const paginationGroup = []
     let startFromNumber
-    let pagesToShow = 5
 
     if (totalPages <= pagesToShow) {
       startFromNumber = 1

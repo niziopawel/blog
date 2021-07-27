@@ -15,6 +15,7 @@ import {
   fetchPostsComments,
   selectCommentsByPostId,
 } from '../../comments/commentsSlice'
+import { isPostLiked } from '../_utilities'
 import './PostDetails.css'
 
 function PostDetails() {
@@ -54,7 +55,7 @@ function PostDetails() {
             <p className="post__content">{post.body}</p>
             <Like
               className="post__like"
-              isLiked={likedPosts[post.id] ? true : false}
+              isLiked={isPostLiked(likedPosts, post.id)}
               onClick={() => dispatch(handlePostLike(post.id))}
             />
           </article>

@@ -5,13 +5,13 @@ import PostCard from '../post-card/PostCard'
 import Pagination from '../../../components/pagination'
 import Spinner from '../../../components/spinner'
 import { fetchPosts, selectAllPosts, selectLikedPosts } from '../postsSlice'
+import { isPostLiked } from '../_utilities'
 import './Posts.css'
 
 function PostsList() {
   const query = useQuery()
   const dispatch = useDispatch()
   const [currentPage, setCurrentPage] = useState(query.get('page') || 1)
-
   const posts = useSelector(selectAllPosts)
   const likedPosts = useSelector(selectLikedPosts)
   const { isLoading, error } = useSelector(state => state.posts)
@@ -44,7 +44,7 @@ function PostsList() {
             <PostCard
               key={post.id}
               post={post}
-              isPostLiked={likedPosts[post.id] ? true : false}
+              isPostLiked={isPostLiked(likedPosts, post.id)}
             />
           ))}
       </section>
@@ -53,6 +53,7 @@ function PostsList() {
         onPageChange={setCurrentPage}
         totalRecords={posts}
         itemsPerPage={20}
+        pagesToShow={5}
       />
     </>
   )
