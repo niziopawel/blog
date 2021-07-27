@@ -5,16 +5,28 @@
   "private": true,
   "scripts": {
     "dev": "webpack serve --config ./webpack.config.js --mode development",
-    "build": "webpack --config ./webpack.config.js --mode production"
+    "build": "webpack --config ./webpack.config.js --mode production",
+    "test": "jest",
+    "test:watch": "yarn test -- --watch",
+    "test:coverage": "yarn test -- --coverage"
   },
   "keywords": [],
   "author": "Paweł Nizio",
   "license": "ISC",
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
   "devDependencies": {
     "@babel/core": "^7.14.6",
     "@babel/preset-env": "^7.14.7",
     "@babel/preset-react": "^7.14.5",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^12.0.0",
     "@typescript-eslint/eslint-plugin": "^4.28.3",
+    "babel-jest": "^27.0.6",
     "babel-loader": "^8.2.2",
     "css-loader": "^6.1.0",
     "eslint-config-prettier": "^8.3.0",
@@ -24,7 +36,11 @@
     "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^4.2.0",
     "html-webpack-plugin": "^5.3.2",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^27.0.6",
+    "jest-dom": "^4.0.0",
     "mini-css-extract-plugin": "^2.1.0",
+    "msw": "^0.33.0",
     "prettier": "^2.3.2",
     "react-hot-loader": "^4.13.0",
     "source-map-loader": "^3.0.0",
@@ -43,5 +59,8 @@
     "redux": "^4.1.0",
     "redux-persist": "^6.0.0",
     "redux-thunk": "^2.3.0"
+  },
+  "msw": {
+    "workerDirectory": "public"
   }
 }

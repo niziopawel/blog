@@ -38,7 +38,7 @@ function PostsList() {
 
   return (
     <>
-      <section className="post-list">
+      <section className="post-list" data-testid="post=list">
         {posts.length > 0 &&
           getPaginatedPosts().map(post => (
             <PostCard
