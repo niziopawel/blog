@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import Card from '../../../components/card'
 import Like from '../../../components/like'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { handlePostLike } from '../postsSlice'
 import './PostCard.css'
 
@@ -9,7 +9,7 @@ function PostCard({ post, isPostLiked }) {
   const dispatch = useDispatch()
 
   return (
-    <Card>
+    <Card data-testid={`post-card-${post.id}`}>
       <Card.Image src="https://aduu.pl/wp-content/uploads/2019/04/placeholder-image-600x450.jpg"></Card.Image>
       <Card.Content>
         <Card.Title>

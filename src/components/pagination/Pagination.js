@@ -55,11 +55,12 @@ function Pagination({
   if (!totalRecords || totalRecords.length === 0) return null
   if (totalPages === 1) return null
   return (
-    <ul className="pagination">
+    <ul className="pagination" data-testid="pagination">
       <button
         onClick={() => goToPreviousPage()}
         className="pagination__item"
         disabled={currentPage === 1}
+        data-testid="previous-btn"
       >
         Previous
       </button>
@@ -71,6 +72,7 @@ function Pagination({
             className={`pagination__item ${
               pageIndex == currentPage ? 'pagination__item--active' : ''
             }`}
+            data-testid="page-number"
           >
             {pageIndex}
           </li>
@@ -80,6 +82,7 @@ function Pagination({
         onClick={() => goToNextPage()}
         className="pagination__item"
         disabled={currentPage === totalPages}
+        data-testid="next-btn"
       >
         Next
       </button>

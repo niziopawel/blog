@@ -2,7 +2,7 @@ import './Spinner.css'
 
 function Spinner() {
   return (
-    <svg className="spinner" viewBox="0 0 50 50">
+    <svg className="spinner" viewBox="0 0 50 50" data-testid="spinner">
       <circle
         className="path"
         cx="25"

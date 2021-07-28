@@ -13,6 +13,7 @@ function Like({ isLiked, onClick, className, ...restProps }) {
   if (isLiked) {
     return (
       <AiFillHeart
+        data-testid="like-active"
         onClick={handleClick}
         className={getLikeClassNames()}
         {...restProps}
@@ -22,6 +23,7 @@ function Like({ isLiked, onClick, className, ...restProps }) {
 
   return (
     <AiOutlineHeart
+      data-testid="like-inactive"
       onClick={handleClick}
       className={getLikeClassNames()}
       {...restProps}

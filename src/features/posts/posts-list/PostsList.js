@@ -16,7 +16,6 @@ function PostsList() {
   const likedPosts = useSelector(selectLikedPosts)
   const { isLoading, error } = useSelector(state => state.posts)
   const [itemsPerPage] = useState(20)
-
   const getPaginatedPosts = () => {
     const startIndex = currentPage * itemsPerPage - itemsPerPage
     const endIndex = startIndex + itemsPerPage
@@ -38,7 +37,7 @@ function PostsList() {
 
   return (
     <>
-      <section className="post-list" data-testid="post=list">
+      <section className="post-list" data-testid="post-list">
         {posts.length > 0 &&
           getPaginatedPosts().map(post => (
             <PostCard
